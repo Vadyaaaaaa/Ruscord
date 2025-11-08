@@ -37,6 +37,7 @@ jobs:
         working-directory: ./client
         env:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL || 'http://localhost:5000' }}
+          PUBLIC_URL: /RuDis
         run: npm run build
 
       - name: Setup Pages
