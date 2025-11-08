@@ -15,7 +15,8 @@ export const useSocketStore = create<SocketState>((set) => ({
     if (!token) {
       // Если нет токена, создаем гостевой
       const guestToken = 'guest-token-' + Date.now();
-      const socket = io('http://localhost:3001', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const socket = io(apiUrl, {
         auth: { token: guestToken },
       });
       socket.on('connect', () => {
@@ -28,7 +29,8 @@ export const useSocketStore = create<SocketState>((set) => ({
       return;
     }
 
-    const socket = io('http://localhost:3001', {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    const socket = io(apiUrl, {
       auth: { token },
     });
 
