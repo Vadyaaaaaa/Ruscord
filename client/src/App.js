@@ -37,8 +37,11 @@ function AppRoutes() {
 }
 
 function App() {
+  // Для GitHub Pages используем basename
+  const basename = process.env.PUBLIC_URL || '';
+  
   return (
-    <Router>
+    <Router basename={basename}>
       <AuthProvider>
         <AppRoutes />
       </AuthProvider>
